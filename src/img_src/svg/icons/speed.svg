@@ -1,0 +1,13 @@
+<svg
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="56px" height="56px">
+<path fill-rule="evenodd"  stroke="rgb(213, 32, 39)" stroke-width="4px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M27.000,2.000 C40.807,2.000 52.000,13.193 52.000,27.000 C52.000,40.807 40.807,52.000 27.000,52.000 C13.193,52.000 2.000,40.807 2.000,27.000 C2.000,13.193 13.193,2.000 27.000,2.000 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(213, 32, 39)" stroke-width="3px" stroke-linecap="round" stroke-linejoin="round" fill="none"
+ d="M26.554,38.163 L25.945,37.435 L39.247,25.002 L39.856,25.730 L26.554,38.163 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(213, 32, 39)" stroke-width="3px" stroke-linecap="round" stroke-linejoin="round" fill="rgb(213, 32, 39)"
+ d="M27.000,34.000 C28.657,34.000 30.000,35.343 30.000,37.000 C30.000,38.657 28.657,40.000 27.000,40.000 C25.343,40.000 24.000,38.657 24.000,37.000 C24.000,35.343 25.343,34.000 27.000,34.000 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(213, 32, 39)" stroke-width="3px" stroke-linecap="round" stroke-linejoin="round" fill="none"
+ d="M10.000,22.000 C13.061,13.784 20.190,10.000 27.000,10.000 C34.168,10.000 40.743,14.044 44.000,22.000 "/>
+</svg>

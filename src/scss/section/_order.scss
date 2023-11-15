@@ -1,0 +1,87 @@
+.order {
+  padding: var(--padding-small) 0 0;
+  // background-image: url("@img/svg/percents.svg");
+  // background-position: left bottom;
+  // background-repeat: repeat-x;
+  background-color: var(--color-accent);
+
+  &__container {
+    display: grid;
+    justify-content: center;
+    gap: rem(30) rem(40);
+
+    @media (min-width: #{$breakpoint992}) {
+      grid-template-columns: repeat(auto-fit, minmax(rem(450), 1fr));
+    }
+  }
+
+  &__left {
+    max-width: rem(470);
+
+    @media (min-width: #{$breakpoint992}) {
+      justify-self: end;
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(20);
+    font-weight: 600;
+    font-style: normal;
+    font-size: #{clamp-rem(320, 1200, 30, 36)};
+    line-height: 1.3;
+    color: var(--color-light);
+
+    @media (max-width: #{$breakpoint992}) {
+      text-align: center;
+    }
+  }
+
+  &__text {
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(20);
+    line-height: 1.3;
+    color: var(--color-light);
+
+    @media (max-width: #{$breakpoint992}) {
+      text-align: center;
+    }
+  }
+
+  &__right {
+    max-width: rem(500);
+  }
+
+  &__btn {
+    padding: em(22) em(42);
+  }
+}
+
+.form {
+  display: grid;
+  gap: rem(10);
+
+  &__label {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__input {
+    border-radius: rem(5);
+    padding-left: rem(20);
+    width: 100%;
+    height: rem(64);
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(18);
+    color: var(--color-dark);
+
+    &::placeholder {
+      color: rgba(40, 41, 68, 0.7);
+    }
+  }
+}
+
+.just-validate-error-label {
+  margin-bottom: rem(3);
+}

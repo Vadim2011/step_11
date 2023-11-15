@@ -1,0 +1,137 @@
+// button  checkbox  input radio
+
+.button {
+  display: inline-flex;
+  padding: 0px 0px;
+  @media (any-hover: hover) {
+    &:hover {
+    }
+  }
+  &._fw {
+    width: 100%;
+  }
+}
+
+.checkbox {
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: em(5);
+  }
+  // .checkbox__input
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    &:focus + .checkbox__label:before {
+      box-shadow: 0 0 5px #000;
+    }
+    &:checked + .checkbox__label:before {
+      background: #000;
+    }
+  }
+  // .checkbox__label
+  &__label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    &:before {
+      content: "";
+      align-self: flex-start;
+      flex: 0 0 20px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #a7a9ac;
+    }
+  }
+  // .checkbox__text
+  &__text {
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.input {
+  border-radius: 0 !important;
+  width: 100%;
+  display: block;
+  padding: 0px 20px;
+  border: 1px solid #eee;
+  &._focus {
+  }
+  &._error {
+  }
+}
+textarea.input {
+  resize: none;
+  padding: 0px 0px;
+}
+
+// radio
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // .options__item
+  &__item {
+    position: relative;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-bottom: em(5);
+    }
+  }
+  // .options__input
+  &__input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    &:focus + .options__label:before {
+      box-shadow: 0 0 5px #000;
+    }
+    &:checked + .options__label:before {
+    }
+    &:checked + .options__label:after {
+      transform: scale(1);
+    }
+  }
+  // .options__label
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    &:before {
+      content: "";
+      align-self: flex-start;
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      border-radius: 50%;
+      border: 1px solid #a7a9ac;
+    }
+    &:after {
+      content: "";
+      transition: all 0.3s ease 0s;
+      transform: scale(0);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #77243a;
+      position: absolute;
+      left: 5px;
+      top: 5px;
+    }
+  }
+  // .options__text
+  &__text {
+  }
+}

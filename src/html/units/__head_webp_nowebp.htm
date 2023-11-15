@@ -1,0 +1,30 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="@@descriprion">
+  <meta name="keywords" content="@@keywords">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+
+  <!-- <link rel="preload" href="fonts/Roboto-BlackItalic.woff2" as="font" type="font/woff2" crossorigin> -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <script>
+    function testWebP(callback) {
+      var webP = new Image();
+      webP.onload = webP.onerror = function () {
+        callback(webP.height == 2);
+      };
+      webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+    }
+    testWebP(function (support) {
+      if (support == true) {
+        document.documentElement.classList.add('webp');
+      } else {
+        document.documentElement.classList.add('no-webp');
+      }
+    });
+  </script>
+
+  <title>@@title</title>
+</head>

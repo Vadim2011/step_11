@@ -1,0 +1,123 @@
+.portfolio {
+  padding: var(--padding-sub) 0;
+  background-color: #f9f9f9;
+
+  &__container {
+  }
+
+  &__title {
+    max-width: rem(700);
+
+    &:not(:last-child) {
+      margin-bottom: clamp-rem(320, 1200, 30, 60);
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(280), 1fr));
+    gap: clamp-rem(320, 1200, 20, 40);
+
+    &:not(:last-child) {
+      margin-bottom: clamp-rem(320, 1200, 30, 50);
+    }
+  }
+
+  &__item {
+  }
+
+  &__btn {
+    border-bottom: rem(1) solid transparent;
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(18);
+    color: var(--color-accent);
+    background-color: transparent;
+    transition: border-color 0.3s ease-in-out;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: rem(1) solid var(--color-accent);
+      outline-offset: rem(5);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        border-color: var(--color-accent);
+      }
+    }
+
+    &:active {
+      border-color: transparent;
+    }
+  }
+}
+
+.example {
+  border-radius: rem(10);
+  padding: rem(30);
+  box-shadow: rem(0) rem(4) rem(6) rem(2) #ddd;
+  background-color: var(--color-light);
+
+  &__link-img {
+    display: block;
+    overflow: hidden;
+    border-radius: rem(5);
+
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: rem(10);
+    }
+  }
+
+  &__text {
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(18);
+    line-height: 1.6; /* 28.8px */
+    color: rgba(20, 16, 36, 0.7);
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+    }
+  }
+
+  &__link {
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(18);
+    line-height: 1.6; /* 28.8px */
+    color: rgba(20, 16, 36, 0.4);
+    transition: color 0.2s ease-in-out;
+
+    &:focus-visible {
+      outline: rem(1) solid currentcolor;
+      outline-offset: rem(3);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: rgba(20, 16, 36, 0.6);
+      }
+    }
+  }
+}

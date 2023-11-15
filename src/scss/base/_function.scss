@@ -1,0 +1,85 @@
+@use "sass:math";
+
+// LHC вычисление высоты строки в долях
+@function lhc($hight, $textsize) {
+  @return math.div(math.ceil(math.div($hight, $textsize) * 100), 100);
+}
+
+// REM
+@function rem($pixels, $context: 16) {
+  @return math.div($pixels, $context) + rem;
+}
+
+// EM
+@function em($pixels, $context: 16) {
+  @return math.div($pixels, $context) + em;
+}
+
+// Percent
+@function percent($px, $from) {
+  @return math.div($px, $from) * 100%;
+}
+
+// clamp PX
+// параметры    . мин размер экр . макс разм экр . мин размер эл . макс размер эл
+@function clamp-px($min-w, $max-w, $size-at-min-w, $size-at-max-w) {
+  $min-width: $min-w;
+  $max-width: $max-w;
+  $size-at-min-width: $size-at-min-w;
+  $size-at-max-width: $size-at-max-w;
+  $slope: math.div(($size-at-max-width - $size-at-min-width), ($max-width - $min-width));
+  $y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
+  $y-axis-inte-ceil: #{math.div(math.ceil($y-axis-intersection * 10000), 10000)};
+  $slope-ceil: #{math.div(math.ceil($slope * 10000), 10000) * 100vw};
+  $flue-value: #{$y-axis-inte-ceil} + px "+" #{$slope-ceil};
+  $return-value: #{"clamp(" #{$size-at-min-width} + px "," #{$flue-value} "," #{$size-at-max-width} + px ")"};
+
+  @return $return-value;
+}
+
+// clamp REM
+// параметры  . мин размер экр . макс разм экр . мин размер эл . макс размер эл
+@function clamp-rem($min-w, $max-w, $size-at-min-w, $size-at-max-w, $font-rem: 16) {
+  $min-width: math.div($min-w, $font-rem);
+  $max-width: math.div($max-w, $font-rem);
+  $size-at-min-width: math.div($size-at-min-w, $font-rem);
+  $size-at-max-width: math.div($size-at-max-w, $font-rem);
+  $slope: math.div(($size-at-max-width - $size-at-min-width), ($max-width - $min-width));
+  $y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
+  $y-axis-inte-ceil: #{math.div(math.ceil($y-axis-intersection * 10000), 10000)};
+  $slope-ceil: #{math.div(math.ceil($slope * 10000), 10000) * 100vw};
+  $flue-value: #{$y-axis-inte-ceil} + rem "+" #{$slope-ceil};
+  $return-value: #{"clamp(" #{$size-at-min-width} + rem "," #{$flue-value} "," #{$size-at-max-width} + rem ")"};
+
+  @return $return-value;
+}
+
+// Адаптивное свойство (clamp)
+// // параметры
+// @function clamp-calc-rem($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
+//   // Для calc();  вычисляем разницу размер эл макс - мин / 16    180 - 20 / 16 = 10
+//   $addSize: math.div($max-width - $min-width, 12);
+
+//   // при указании отрицательных значений
+//   @if ($min-width <= 0) {
+//     $min-width: 0.0001;
+//   }
+//   @if ($max-width <= 0) {
+//     $max-width: 0.0001;
+//   }
+
+//   // Брейк-поинты в EM  от размера экр 1600 до разм экр 480
+//   $widthFromMedia: math.div($size-at-max-width, 12) + em;
+//   $widthToMedia: math.div($size-at-min-width, 12) + em;
+
+//   // Формула плавающего значения
+//   // Источник: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+//   $slope: math.div(($max-width - $min-width), ($size-at-max-width - $size-at-min-width));
+//   $yIntersection: -$size-at-min-width * $slope + $min-width;
+//   $flyValue: math.div($yIntersection, 12) + rem " + " #{$slope * 100}vw;
+
+//   // Получение значения свойства
+//   $result: #{"clamp(" rem($min-width) "," $flyValue "," rem($max-width) ")"};
+
+//   @return $result;
+// }

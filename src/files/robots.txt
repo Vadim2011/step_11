@@ -1,0 +1,10 @@
+User-agent: *
+
+Disallow: /admin.html/
+Disallow: /assets/
+Disallow: /experts/
+
+Allow: /
+
+Host: https://site.ru
+Sitemap: http://site.com/sitemap.xml

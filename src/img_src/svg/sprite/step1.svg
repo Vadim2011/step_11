@@ -1,0 +1,21 @@
+<svg
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="367px" height="136px">
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="3px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M89.995,46.097 C89.995,35.555 74.327,27.009 55.001,27.009 C35.673,27.009 20.005,35.555 20.005,46.097 C20.005,55.118 31.481,62.672 46.903,64.666 C45.647,68.040 43.553,72.019 40.268,74.006 C46.599,74.014 52.842,69.307 57.122,65.147 C75.460,64.548 89.995,56.250 89.995,46.097 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="3px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M55.081,85.547 C55.081,77.278 67.133,70.575 81.999,70.575 C96.867,70.575 108.919,77.278 108.919,85.547 C108.919,92.622 100.091,98.546 88.229,100.110 C89.194,102.757 90.805,105.878 93.333,107.436 C88.463,107.443 83.660,103.750 80.368,100.488 C66.262,100.018 55.081,93.510 55.081,85.547 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round" fill="none"
+ d="M36.000,51.000 L36.000,50.000 L75.000,50.000 L75.000,51.000 L36.000,51.000 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round" fill="none"
+ d="M35.561,44.000 L35.561,43.000 L57.439,43.000 L57.439,44.000 L35.561,44.000 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round" fill="none"
+ d="M65.561,83.000 L65.561,82.000 L87.439,82.000 L87.439,83.000 L65.561,83.000 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round" fill="none"
+ d="M65.669,89.000 L65.669,88.000 L80.331,88.000 L80.331,89.000 L65.669,89.000 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="4px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M67.000,4.906 C101.293,4.906 129.094,32.707 129.094,67.000 C129.094,101.293 101.293,129.094 67.000,129.094 C32.707,129.094 4.906,101.293 4.906,67.000 C4.906,32.707 32.707,4.906 67.000,4.906 Z"/>
+<path fill-rule="evenodd"  stroke="rgb(38, 30, 68)" stroke-width="4px" stroke-linecap="butt" stroke-linejoin="miter" fill="none"
+ d="M130.020,68.000 L130.020,67.000 L360.980,67.000 L360.980,68.000 L130.020,68.000 Z"/>
+</svg>

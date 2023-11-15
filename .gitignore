@@ -1,0 +1,15 @@
+
+node_modules
+
+dist
+docs
+
+package-lock.json
+
+.vscode
+*.log
+*.rar
+*.zip
+.idea
+venv
+env

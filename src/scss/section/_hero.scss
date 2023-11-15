@@ -1,0 +1,59 @@
+.hero {
+  background-image: url("@img/bg/bg_hero/bg_stite38.webp");
+  background-position: 105% center;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-color: var(--color-dark);
+
+  @media (max-width: $breakpoint992) {
+    background-size: auto 70%;
+  }
+
+  @media (max-width: $breakpoint768) {
+    background-position: center 135%;
+  }
+
+  &__container {
+    padding-top: clamp-rem(320, 1200, 100, 344);
+    padding-bottom: clamp-rem(320, 1200, 40, 410);
+  }
+
+  &__content {
+    max-width: rem(520);
+
+    @media (max-width: $breakpoint768) {
+      display: grid;
+      justify-content: center;
+      max-width: none;
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(50);
+    font-weight: 600;
+    font-style: normal;
+    font-size: var(--h1);
+    line-height: 1.8;
+    letter-spacing: rem(0.9);
+    color: var(--color-light);
+
+    @media (max-width: $breakpoint768) {
+      text-align: center;
+    }
+  }
+
+  &__title-text {
+    display: block;
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(20);
+    line-height: 1.6;
+    letter-spacing: rem(0.4);
+    text-transform: initial;
+    color: var(--color-light);
+  }
+
+  &__btn {
+    color: var(--color-light);
+  }
+}

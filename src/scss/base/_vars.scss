@@ -1,0 +1,80 @@
+// если вы хотите использовать sass-переменные - удалите root
+@import "./function";
+
+:root {
+  // container
+  --content-width: #{rem(1160)};
+  --container-padding: #{rem(15)};
+  --container-width: calc(var(--content-width) + (var(--container-padding)) * 2);
+  --content-fluid-width: #{rem(1720)};
+  --container-fluid-width: calc(var(--content-fluid-width) + (var(--container-padding)) * 2);
+
+  // fonts
+  --font-default: "Jost", serif; // "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+  // --font-main: "Jost-SemiBold", serif;
+  // --font-second: "Jost-Bold", serif;
+
+  // color
+  --color-main: #141024;
+  --color-accent: #d52027;
+  --color-dark: #141024;
+  --color-light: #fff;
+  --color-text: rgba(20, 16, 36, 0.7);
+  --color-text-accent: #d52027;
+  --color-bg: #fff;
+  // size
+  --font-size: rem(16);
+
+  // clamp size  (320_px, 1200_px, min_px, max_120px)
+  --padding-base: #{clamp-rem(320, 1200, 60, 120)};
+  --padding-sub: #{clamp-rem(320, 1200, 50, 100)};
+  --padding-small: #{clamp-rem(320, 1200, 30, 80)};
+  --h1: #{clamp-rem(320, 1200, 30, 70)};
+  --h2: #{clamp-rem(320, 1200, 30, 50)};
+  --h3: #{clamp-rem(320, 1200, 20, 24)};
+  --p-norm: #{clamp-rem(320, 1200, 16, 18)};
+}
+
+.dark {
+  --color-bg: #222;
+  --color-text: #fff;
+}
+
+$fontColor: #eef;
+$breakpoint1450: 1449.98px;
+$breakpoint1200: 1199.98px;
+$breakpoint992: rem(991.98);
+$breakpoint768: 767.98px;
+$breakpoint576: 575.98px;
+$breakpoint480: 479.98px;
+$breakpoint320: 320px;
+
+// media point
+// --desctop-size: 1449.98px;
+// --laptop-size: 1199.98px;
+// --tablet-size: 991.98px;
+// --tablet-size-sm: 767.98px;
+// --mobile-size: 575.98px;
+// --mobile-size-sm: 479.98px;
+// --mobile-size-es: 320px;
+
+// // H
+// --h1: #{clamp-calc(320px, 1420px, 30px, 68px)};
+// --h2: #{clamp-calc(320px, 1420px, 24px, 48px)};
+// --h3: #{clamp-calc(320px, 1420px, 20px, 40px)};
+// --h4: #{clamp-calc(320px, 1420px, 18px, 36px)};
+// --h5: #{clamp-calc(320px, 1420px, 16px, 32px)};
+
+// // padding
+// --p-big: #{clamp-calc(320px, 1420px, 16px, 32px)};
+// --p-norm: #{clamp-calc(320px, 1420px, 16px, 32px)};
+// --p-small: #{clamp-calc(320px, 1420px, 16px, 18px)};
+// --p-base: 18px;
+// --body: 18px;
+// --padding-base: #{clamp-calc(320px, 1420px, 40px, 180px)};
+// --padding-sub: #{clamp-calc(320px, 1420px, 40px, 160px)};
+
+// // margin
+// --margin-base: #{clamp-calc(320px, 1420px, 50px, 180px)};
+// --margin-sub: #{clamp-calc(320px, 1420px, 40px, 160px)};
+// --margin-block-title: #{clamp-calc(320px, 1420px, 10px, 30px)};

@@ -1,0 +1,31 @@
+
+
+точки перелома саййта 1440 1200 1024 992 768
+
+reset font-size 14px ?
+
+передача шрифтов предзагрузка ?
+
+модалки
+ошибка в классе модалки при скролле сохраняется авто в инлайн стилях
+
+
+слайдер во флекс добавить min-width: 0
+
+
+где и какие использовать
+АРИА
+
+  button class="burger"
+aria-label="Открыть меню"
+aria-expanded="false"
+
+aria-expanded="true"
+aria-label="Закрыть меню"
+
+aria-hidden="true"
+
+aria-modal="true"
+aria-label="Закрыть модальное окно"
+
+role="dialog"

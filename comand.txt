@@ -1,0 +1,28 @@
+npx stylelint "./dist/**/*.css"
+
+npx stylelint "./src/scss/**/*.scss"
+
+alt + shift + f
+
+// style svg  fill -- currentcolor
+
+.icon-box {
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+  color: var(--color-main);
+  transition: outline-color 0.2s linear, color 0.4s linear;
+}
+.icon-box:focus{
+  outline-color: blueviolet;
+}
+.icon-box:hover{
+  color: var(--color-second);
+}
+.icon-box:active{
+  color: var(--color-accent);
+}
+.icon-box svg {
+  fill: currentcolor;
+}
+
+
