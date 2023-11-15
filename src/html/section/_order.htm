@@ -6,15 +6,15 @@
     </div>
 
     <div class="order__right">
-      <form method="get" class="form order__form">
+      <form method="post" class="form order__form">
         <label class="order__label form__label">
-          <input class="form__input input-name" placeholder="Имя" type="text" name="name">
+          <input class="form__input input-name" placeholder="Имя*" type="text" name="name">
         </label>
         <label class="order__label form__label">
-          <input class="form__input input-tel" placeholder="Телефон" type="tel" name="tel">
+          <input autocomplete="off" class="form__input input-tel" placeholder="Телефон" type="tel" name="tel">
         </label>
         <label class="order__label form__label">
-          <input class="form__input input-email" placeholder="E-mail" type="email" name="email">
+          <input class="form__input input-email" placeholder="E-mail*" type="email" name="email">
         </label>
         <button class="order__btn btn btn--dark">Оформить заявку</button>
       </form>

@@ -46,3 +46,6 @@ const afterForm = () => {
 };
 
 validateForms('.order__form', rules, afterForm);
+validateForms('.service-order__form--card', rules, afterForm);
+validateForms('.service-order__form--landing', rules, afterForm);
+validateForms('.service-order__form--shop', rules, afterForm);

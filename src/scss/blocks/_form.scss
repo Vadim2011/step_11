@@ -1,0 +1,37 @@
+.form {
+  display: grid;
+  gap: rem(10);
+
+  &__label {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__input {
+    border-radius: rem(5);
+    padding-left: rem(20);
+    width: 100%;
+    height: rem(64);
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(18);
+    color: var(--color-dark);
+
+    &::placeholder {
+      color: rgba(40, 41, 68, 0.7);
+    }
+  }
+}
+
+.just-validate-error-label {
+  margin-bottom: rem(3);
+}
+
+.service-order__label {
+  margin: 0 rem(4);
+  box-shadow: 0 0 rem(6) rgba(20, 16, 36, 0.2);
+}
+
+.service-order__btn {
+  margin-top: rem(12);
+}
