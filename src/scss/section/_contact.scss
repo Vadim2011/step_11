@@ -1,0 +1,53 @@
+.contact {
+  padding: var(--padding-sub) 0;
+
+  &__container {
+  }
+
+  &__title {
+    &:not(:last-child) {
+      margin-bottom: clamp-rem(320, 1200, 30, 60);
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(250), 1fr));
+    gap: rem(30);
+  }
+
+  &__link {
+  }
+
+  &__subtitle {
+    &:not(:last-child) {
+      margin-bottom: clamp-rem(320, 1200, 14, 30);
+    }
+  }
+
+  &__link-list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+  }
+
+  &__link-item {
+    min-height: rem(30);
+    display: flex;
+    align-items: end;
+    gap: rem(10);
+    a,
+    address {
+      font-weight: 400;
+      font-style: normal;
+      font-size: rem(18);
+      color: rgba(20, 16, 36, 0.7);
+    }
+  }
+
+  &__times {
+  }
+
+  &__times-title {
+  }
+}

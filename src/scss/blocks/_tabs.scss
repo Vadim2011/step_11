@@ -1,0 +1,24 @@
+// vendor ----------------------------
+.tabs__panel {
+  display: none;
+}
+
+.tabs__nav {
+  display: flex;
+  list-style: none;
+}
+
+.tabs__panel--active {
+  display: block;
+}
+
+.tabs__nav-btn:focus {
+  color: #fff;
+  background-color: navy;
+}
+
+.tabs__nav-btn--active {
+  background-color: wheat;
+}
+
+// ----------------------------

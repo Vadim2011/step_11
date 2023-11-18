@@ -20,6 +20,7 @@
 @import "./blocks/modals";
 @import "./blocks/ticker";
 @import "./blocks/form";
+// @import "./blocks/tabs";
 
 // section base
 @import "./section/header";
@@ -29,7 +30,9 @@
 @import "./section/steps";
 @import "./section/portfolio";
 @import "./section/order";
-@import "./section/workers";
+@import "./section/reviews";
+@import "./section/technology";
+@import "./section/contact";
 
 // footer
 @import "./section/footer";

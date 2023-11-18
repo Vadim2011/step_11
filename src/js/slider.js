@@ -14,7 +14,7 @@ Swiper.use([Navigation, Pagination, Scrollbar]);
 
 
 // init Swiper:
-const swiper = new Swiper('.swiper', {
+const swipersteps = new Swiper('.steps__content', {
   // configure Swiper to use modules
   slidesPerView: 'auto',
   spaceBetween: 0,
@@ -25,5 +25,16 @@ const swiper = new Swiper('.swiper', {
   navigation: {
     nextEl: ".steps__slider-btn--next",
     prevEl: ".steps__slider-btn--prev",
+  },
+});
+
+const swiperreviews = new Swiper('.reviews__content', {
+  // configure Swiper to use modules
+  slidesPerView: 1,
+  spaceBetween: 10,
+
+  navigation: {
+    nextEl: ".reviews__slider-btn--next",
+    prevEl: ".reviews__slider-btn--prev",
   },
 });

@@ -319,7 +319,7 @@ export const fontsStyleDev = () => {
         // отделяем расширение
         let fontFileName = fonts_Files[i].split('.')[0];
         if (newFileOnly !== fontFileName) {
-          let fontName = fontFileName.split('-')[0] ? fontFileName.split('-') : fontFileName;
+          let fontName = fontFileName.split('-')[0] ? fontFileName.split('-')[0] : fontFileName;
           let fontWeight = fontFileName.split('-')[1] ? fontFileName.split('-')[1] : fontFileName;
           if (fontWeight.toLowerCase() === 'thin') {
             fontWeight = 100;

@@ -1,30 +1,33 @@
 .graph-modal {
   --transition-time: 0.3s;
+
   position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.7);
-  cursor: pointer;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden auto;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--transition-time), visibility var(--transition-time);
+  cursor: pointer;
+  inset: 0;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
 
   &__title {
     margin-bottom: rem(34);
   }
-}
 
-.graph-modal::before {
-  content: "";
-  display: inline-block;
-  vertical-align: middle;
-  height: 100%;
+  @media (max-width: $breakpoint768) {
+    &::before {
+      display: none;
+    }
+  }
 }
 
 .graph-modal__container {
@@ -33,7 +36,7 @@
   margin: rem(50) auto;
   border-radius: rem(5);
   padding: rem(30) rem(20);
-  width: rem(1000);
+  width: rem(960);
   text-align: left;
   background-color: #fff;
   cursor: default;

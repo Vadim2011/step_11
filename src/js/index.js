@@ -7,3 +7,5 @@ import './validation.js';
 import './viewmore.js';
 
 import './burger.js'
+
+// import './tabs.js'
