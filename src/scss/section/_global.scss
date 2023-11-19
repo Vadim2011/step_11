@@ -13,7 +13,7 @@
 .subtitle {
   font-weight: 600;
   font-style: normal;
-  font-size: rem(24);
+  font-size: var(--h3);
   line-height: 1.6;
   color: var(--color-dark);
   &--tooltip {

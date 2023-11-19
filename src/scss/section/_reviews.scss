@@ -92,7 +92,7 @@
     margin-bottom: clamp-rem(320, 1200, 14, 24);
     font-weight: 600;
     font-style: normal;
-    font-size: rem(24);
+    font-size: var(--h3);
     line-height: 1.2;
     color: var(--color-main);
 
