@@ -18,19 +18,10 @@
       position: relative;
       z-index: 5;
       margin: 0 rem(20) 0 auto;
-      border: rem(1) solid var(--color-light);
-      border-radius: rem(10);
       width: rem(44);
       height: rem(44);
       font-size: 0;
-      background: url("@img/svg/icons/phone.svg") center no-repeat,
-        radial-gradient(circle at 100% 100%, #141024 0, #141024 8px, transparent 8px) 0% 0%/10px 10px no-repeat,
-        radial-gradient(circle at 0 100%, #141024 0, #141024 8px, transparent 8px) 100% 0%/10px 10px no-repeat,
-        radial-gradient(circle at 100% 0, #141024 0, #141024 8px, transparent 8px) 0% 100%/10px 10px no-repeat,
-        radial-gradient(circle at 0 0, #141024 0, #141024 8px, transparent 8px) 100% 100%/10px 10px no-repeat,
-        linear-gradient(#141024, #141024) 50% 50% / calc(100% - 4px) calc(100% - 20px) no-repeat,
-        linear-gradient(#141024, #141024) 50% 50% / calc(100% - 20px) calc(100% - 4px) no-repeat,
-        linear-gradient(0deg, transparent 0%, #fff 100%);
+      background: url("@img/svg/icons/phone.svg") center no-repeat;
     }
   }
 }
@@ -124,20 +115,11 @@
   position: relative;
   z-index: 5;
   display: none;
-  border: rem(1) solid var(--color-light);
-  border-radius: rem(10);
   padding: rem(6);
   width: var(--burger-width);
   height: var(--burger-height);
   color: #fff;
   background-color: transparent;
-  background: radial-gradient(circle at 100% 100%, #141024 0, #141024 8px, transparent 8px) 0% 0%/10px 10px no-repeat,
-    radial-gradient(circle at 0 100%, #141024 0, #141024 8px, transparent 8px) 100% 0%/10px 10px no-repeat,
-    radial-gradient(circle at 100% 0, #141024 0, #141024 8px, transparent 8px) 0% 100%/10px 10px no-repeat,
-    radial-gradient(circle at 0 0, #141024 0, #141024 8px, transparent 8px) 100% 100%/10px 10px no-repeat,
-    linear-gradient(#141024, #141024) 50% 50% / calc(100% - 4px) calc(100% - 20px) no-repeat,
-    linear-gradient(#141024, #141024) 50% 50% / calc(100% - 20px) calc(100% - 4px) no-repeat,
-    linear-gradient(0deg, transparent 0%, #fff 100%);
   cursor: pointer;
 
   &__line {

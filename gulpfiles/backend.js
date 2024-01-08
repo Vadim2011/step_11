@@ -11,11 +11,11 @@ import replace from 'gulp-replace';
 import rename from 'gulp-rename';
 import newer from 'gulp-newer';
 import zip from 'gulp-zip';
+import filter from 'gulp-filter';
 
 import fileInclude from 'gulp-file-include';
 import webpHtmlNosvg from 'gulp-webp-html-nosvg';
 import htmlmin from 'gulp-htmlmin';
-
 
 import * as sass_ from 'sass'
 import gulpSass from 'gulp-sass';
@@ -31,6 +31,9 @@ import svgmin from 'gulp-svgmin';
 import cheerio from 'gulp-cheerio';
 import svgSprite from 'gulp-svg-sprite';
 import svgcss from 'gulp-svg-css-pseudo';
+
+import favicons from 'gulp-favicons';
+import configFav from '../src/favicon_conf/config_favicon.js';
 
 import fs from 'fs';
 import fonter from 'gulp-fonter-fix';
@@ -55,7 +58,8 @@ export const pathBack = {
     img_src: './src/img_src',
     fonts: './src/fonts',
     js: './src/js',
-    files: './src/files/**/*.*'
+    files: './src/files/**/*.*',
+    favicon: 'src/img/favicon/*.{svg,png}'
   },
   build: {
     base: './app',
@@ -64,7 +68,8 @@ export const pathBack = {
     img: './app/img',
     fonts: './app/fonts',
     js: './app/js',
-    files: './app'
+    files: './app',
+    favicon: './app/favicons/'
   }
 }
 
@@ -156,10 +161,10 @@ export const imageminBack = () => {
     .pipe(plumber(plumberNotify('IMAGE MIN')))
     // .pipe(newer(pathBack.src.img))
     .pipe(imagemin([
-      mozjpeg({quality: 95, progressive: true}),
-      optipng({optimizationLevel: 3})
+      mozjpeg({ quality: 95, progressive: true }),
+      optipng({ optimizationLevel: 3 })
     ],
-    {verbose:true}
+      { verbose: true }
     ))
     .pipe(gulp.dest(pathBack.src.img));
 }
@@ -170,7 +175,7 @@ export const webpBack = () => {
   return gulp.src(`${pathBack.src.img}/**/*.{jpg,png,jpeg,gif,JPG,JPEG,PNG,GIF}`)
     .pipe(plumber(plumberNotify('IMAGE WEBP')))
     // .pipe(newer(pathBack.src.img))
-    .pipe(webp({quality: 90}))
+    .pipe(webp({ quality: 90 }))
     .pipe(gulp.dest(pathBack.src.img));
 }
 
@@ -189,12 +194,6 @@ export const svgBack = () => {
       }
     }))
 
-    // .pipe(cheerio({
-    //   run: function ($) { $('[fill]').removeAttr('fill'); $('[stroke]').removeAttr('stroke'); $('[style]').removeAttr('style'); },
-    //   parserOptions: { xmlMode: true }
-    // }))
-    // .pipe(replace('&gt;', '>'))
-
     .pipe(gulp.dest(pathBack.src.img))
 }
 
@@ -208,17 +207,7 @@ export const svgSpriteBack = () => {
         pretty: true,
       },
     }))
-    .pipe(cheerio({
-      run: function ($) {
-        $('[fill]').removeAttr('fill');
-        $('[stroke]').removeAttr('stroke');
-        $('[style]').removeAttr('style');
-      },
-      parserOptions: {
-        xmlMode: true
-      },
-    }))
-    .pipe(replace('&gt;', '>'))
+
     .pipe(svgSprite({
       mode: {
         symbol: {
@@ -230,29 +219,6 @@ export const svgSpriteBack = () => {
     }))
     .pipe(gulp.dest(`${pathBack.build.img}/svg`));
 }
-
-{/*  <svg class="img">
-        <use xlink:href="sprite.svg#shopping-cart "></use>
-    </svg>
-
-  .icon {
-  display: inline-block;
-  height: 1em;
-  width: 1em;
-  fill: inherit;
-  stroke: inherit;
-}
-
-.icon-burger {
-  font-size:4rem;
-  width:(66/64)+em;
-}
-
-.icon-check_round {
-  font-size:1rem;
-  width:(18/18)+em;
-}
-*/}
 
 // svg BG
 export const svgcssBack = () => {
@@ -282,6 +248,20 @@ export const imgcopyBack = () => {
 }
 // =============================================================================
 
+// FAVICON
+// =============================================================================
+export const faviconBack = () => {
+  // img to min
+  return gulp.src(pathBack.src.favicon)   // [`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`]
+    .pipe(plumber(plumberNotify('FAVICON generate')))
+    .pipe(favicons(configFav))
+    .pipe(gulp.dest(pathBack.build.favicon))
+
+    .pipe(gulp.src('src/img/favicon/favicon.{png,svg}'))
+    .pipe(filter(['favicon.{png,svg}', 'manifest.webmanifest', 'favicon.ico', 'yandex-browser-manifest.json']))
+    .pipe(gulp.dest('./app'))
+    .pipe(browserSync.stream());
+}
 
 // FONTS
 // =============================================================================
@@ -315,7 +295,7 @@ export const fontsStyleBack = () => {
           // отделяем расширение
           let fontFileName = fonts_Files[i].split('.')[0];
           if (newFileOnly !== fontFileName) {
-            let fontName = fontFileName.split('-')[0] ? fontFileName.split('-') : fontFileName;
+            let fontName = fontFileName.split('-')[0] ? fontFileName.split('-')[0] : fontFileName;
             let fontWeight = fontFileName.split('-')[1] ? fontFileName.split('-')[1] : fontFileName;
             if (fontWeight.toLowerCase() === 'thin') {
               fontWeight = 100;
@@ -339,7 +319,7 @@ export const fontsStyleBack = () => {
             fs.appendFile(fontsFile,
               `@font-face {
   src: local("${fontFileName}"), url("../fonts/${fontFileName}.woff2") format("woff2");
-  font-family: "${fontFileName}";
+  font-family: "${fontName}";
   font-weight: ${fontWeight};
   font-style: normal;
   font-display: swap;

@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="page">
+<html lang="ru" class="page">
 
-@@include('html/part/_head.htm',{"title": "Делаем сайты в Иркутске",
-"descriprion": "Разработка лендингов, интернет магазинов, создание сайтов в Иркутске",
-"keywords":"сайты лендинги веб разработка в Иркутске быстро не дорого"})
+<head>
+  <meta charset="UTF-8">
+  @@include('html/part/_favicon.htm')
+
+  @@include('html/part/_head.htm',{"title": "Делаем сайты в Иркутске",
+  "descriprion": "Разработка лендингов, интернет магазинов, создание сайтов в Иркутске",
+  "keywords":"сайты лендинги веб разработка в Иркутске быстро не дорого"})
+
+</head>
 
 <body class="page-body">
 
@@ -12,18 +18,12 @@
   <main class="main">
     @@include('html/section/_hero.htm')
     @@include('html/section/_about.htm')
-    @@include('html/section/_services.htm')
-    @@include('html/section/_steps.htm')
-    @@include('html/section/_portfolio.htm')
-    @@include('html/section/_order.htm')
-    @@include('html/section/_reviews.htm')
-    @@include('html/section/_technology.htm')
     @@include('html/section/_contact.htm')
-
   </main>
 
   @@include('html/section/_footer.htm')
   @@include('html/blocks/_modals.htm')
+  @@include('html/units/_load_cercle.htm')
 
   @@include('html/part/_js.htm')
 </body>

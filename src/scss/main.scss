@@ -11,27 +11,23 @@
 @import "base/reset";
 @import "base/vars";
 @import "base/base";
-@import "base/svg_bg";
+// @import "base/svg_bg";
 
 // ======================================================================================
 
 /* Section */
 @import "section/global";
 @import "./blocks/modals";
-@import "./blocks/ticker";
-@import "./blocks/form";
+
+// @import "./blocks/ticker";
+// @import "./blocks/form";
+// @import "./blocks/load_cercle";
 // @import "./blocks/tabs";
 
 // section base
 @import "./section/header";
 @import "./section/hero";
 @import "./section/about";
-@import "./section/services";
-@import "./section/steps";
-@import "./section/portfolio";
-@import "./section/order";
-@import "./section/reviews";
-@import "./section/technology";
 @import "./section/contact";
 
 // footer

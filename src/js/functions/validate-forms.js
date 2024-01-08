@@ -60,7 +60,7 @@ export const validateForms = (selector, rules, afterSend) => {
       }
     }
 
-    xhr.open('POST', 'mail.php', true);
+    xhr.open('POST', 'send-email', true);
     xhr.send(formData);
 
     ev.target.reset();

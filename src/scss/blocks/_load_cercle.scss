@@ -1,0 +1,70 @@
+.load-circle {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  &--big {
+    border: 2px solid #bde;
+    border-top: 2px solid transparent;
+    width: 12rem;
+    height: 12rem;
+    animation: loading 6s infinite linear;
+  }
+
+  &--medium {
+    border: 2px solid #47a; // #789;
+    border-top: 2px solid transparent;
+    width: 8rem;
+    height: 8rem;
+    animation: loading 5s infinite linear;
+  }
+
+  &--small {
+    border: 2px solid #082e51; // #2f4f4f
+    border-top: 2px solid transparent;
+    width: 4rem;
+    height: 4rem;
+    animation: loading 4s infinite linear;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.message {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 20rem;
+  height: 5rem;
+  font-size: 1rem;
+  background-color: rgba(17, 35, 69, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+#send-message {
+  color: #add8e6;
+  background-color: rgba(17, 35, 69, 0.9);
+}
+
+#not-send-message {
+  color: #f08080;
+  background-color: rgba(69, 35, 17, 0.9);
+}

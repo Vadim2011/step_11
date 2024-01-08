@@ -9,8 +9,6 @@
   &__item {
     position: relative;
     flex-shrink: 0;
-    // font-size: rem(17);
-    // text-transform: uppercase;
     animation: ticker 30s linear infinite;
   }
 }

@@ -53,33 +53,3 @@
 
   @return $return-value;
 }
-
-// Адаптивное свойство (clamp)
-// // параметры
-// @function clamp-calc-rem($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
-//   // Для calc();  вычисляем разницу размер эл макс - мин / 16    180 - 20 / 16 = 10
-//   $addSize: math.div($max-width - $min-width, 12);
-
-//   // при указании отрицательных значений
-//   @if ($min-width <= 0) {
-//     $min-width: 0.0001;
-//   }
-//   @if ($max-width <= 0) {
-//     $max-width: 0.0001;
-//   }
-
-//   // Брейк-поинты в EM  от размера экр 1600 до разм экр 480
-//   $widthFromMedia: math.div($size-at-max-width, 12) + em;
-//   $widthToMedia: math.div($size-at-min-width, 12) + em;
-
-//   // Формула плавающего значения
-//   // Источник: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
-//   $slope: math.div(($max-width - $min-width), ($size-at-max-width - $size-at-min-width));
-//   $yIntersection: -$size-at-min-width * $slope + $min-width;
-//   $flyValue: math.div($yIntersection, 12) + rem " + " #{$slope * 100}vw;
-
-//   // Получение значения свойства
-//   $result: #{"clamp(" rem($min-width) "," $flyValue "," rem($max-width) ")"};
-
-//   @return $result;
-// }

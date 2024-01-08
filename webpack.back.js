@@ -3,7 +3,7 @@ const configProd = {
   entry: {
     index: './src/js/index.js',
     vendor: './src/js/vendor.js',
-    // about: './src/js/about.js',
+    js404: './src/js/js404.js',
   },
   output: {
     filename: '[name].bundle.min.js',

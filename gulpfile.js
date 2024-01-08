@@ -4,8 +4,8 @@ import {
   pathDev, pathRoot, delDev, copyDev,
   htmlDev, scssDev, imageminDev,
   webpDev, svgDev, svgSpriteDev,
-  svgcssDev, svgcopyDev, imgcopyDev, fontsDev,
-  fontsStyleDev, jsDev,
+  svgcssDev, svgcopyDev, imgcopyDev, faviconDev,
+  fontsDev, fontsStyleDev, jsDev,
   serverDev
 } from './gulpfiles/dev.js';
 
@@ -13,8 +13,8 @@ import {
   pathProd, delProd, copyProd,
   htmlProd, scssProd, imageminProd,
   webpProd, svgProd, svgSpriteProd,
-  svgcssProd, svgcopyProd, imgcopyProd, fontsProd,
-  fontsStyleProd, jsProd,
+  svgcssProd, svgcopyProd, imgcopyProd, faviconProd,
+  fontsProd, fontsStyleProd, jsProd,
   serverProd
 } from './gulpfiles/docs.js';
 
@@ -22,13 +22,13 @@ import {
   pathBack, delBack, copyBack,
   htmlBack, scssBack, imageminBack,
   webpBack, svgBack, svgSpriteBack,
-  svgcssBack, svgcopyBack, imgcopyBack, fontsBack,
-  fontsStyleBack, jsBack,
+  svgcssBack, svgcopyBack, imgcopyBack, faviconBack,
+  fontsBack, fontsStyleBack, jsBack,
   serverBack
 } from './gulpfiles/backend.js';
 
 
-import { zipFiles} from './gulpfiles/zip.js';
+import { zipFiles } from './gulpfiles/zip.js';
 
 import { readFileSync } from 'fs';
 import rev from 'gulp-rev';
@@ -62,6 +62,7 @@ const watcherDev = () => {
   gulp.watch(pathDev.src.htm, htmlDev);
   gulp.watch(pathDev.src.scss, scssDev);
   gulp.watch(pathDev.src.js, jsDev);
+  gulp.watch(pathDev.src.favicon, faviconDev);
   gulp.watch(pathDev.src.fonts, gulp.series(fontsDev, fontsStyleDev));
   gulp.watch(pathDev.src.img_src, gulp.series(svgDev, imageminDev, webpDev, svgcssDev, svgcopyDev, imgcopyDev));
 }
@@ -73,25 +74,26 @@ const watcherProd = () => {
   gulp.watch(pathProd.src.htm, htmlProd);
   gulp.watch(pathProd.src.scss, scssProd);
   gulp.watch(pathProd.src.js, jsProd);
+  gulp.watch(pathProd.src.favicon, faviconProd);
   gulp.watch(pathProd.src.fonts, gulp.series(fontsProd, fontsStyleProd));
   gulp.watch(pathProd.src.img_src, gulp.series(svgProd, imageminProd, webpProd, svgcssProd, svgcopyProd, imgcopyProd));
 }
 
 const dev = gulp.series(delDev, copyDev, fontsDev, fontsStyleDev, htmlDev,
-  scssDev, imageminDev, webpDev, svgDev, svgSpriteDev, svgcopyDev, imgcopyDev,
+  scssDev, imageminDev, webpDev, svgDev, svgSpriteDev, svgcopyDev, imgcopyDev, faviconDev,
   svgcssDev, jsDev, gulp.parallel(serverDev, watcherDev));
 
 gulp.task('default', dev);
 
 const prod = gulp.series(delProd, copyProd, fontsProd, fontsStyleProd, htmlProd,
-  scssProd, imageminProd, webpProd, svgProd, svgSpriteProd, svgcopyProd, imgcopyProd,
+  scssProd, imageminProd, webpProd, svgProd, svgSpriteProd, svgcopyProd, imgcopyProd, faviconProd,
   svgcssProd, jsProd, gulp.parallel(serverProd, watcherProd));
 
 gulp.task('build', prod);
 
 
 const back = gulp.series(delBack, copyBack, fontsBack, fontsStyleBack, htmlBack,
-  scssBack, imageminBack, webpBack, svgBack, svgSpriteBack, svgcopyBack, imgcopyBack,
+  scssBack, imageminBack, webpBack, svgBack, svgSpriteBack, svgcopyBack, imgcopyBack, faviconBack,
   svgcssBack, jsBack);
 
 gulp.task('back', back);
@@ -134,3 +136,6 @@ export { imgcopy };
 
 const deploy_ftp = 'not development module';
 export { deploy_ftp };
+
+const favicons = faviconDev;
+export { favicons };

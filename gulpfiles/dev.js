@@ -22,6 +22,7 @@ import webpcss from 'gulp-webpcss';
 import cleanCSS from 'gulp-clean-css';
 import groupCssMediaQueries from 'gulp-group-css-media-queries';
 import autoprefixer from 'gulp-autoprefixer';
+import filter from 'gulp-filter';
 
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 import webp from 'gulp-webp';
@@ -29,6 +30,9 @@ import svgmin from 'gulp-svgmin';
 import cheerio from 'gulp-cheerio';
 import svgSprite from 'gulp-svg-sprite';
 import svgcss from 'gulp-svg-css-pseudo';
+
+import favicons from 'gulp-favicons';
+import configFav from '../src/favicon_conf/config_favicon.js';
 
 import fs from 'fs';
 import fonter from 'gulp-fonter-fix';
@@ -53,7 +57,8 @@ export const pathDev = {
     img_src: './src/img_src',
     fonts: './src/fonts',
     js: './src/js',
-    files: './src/files/**/*.*'
+    files: './src/files/**/*.*',
+    favicon: 'src/img/favicon/*.{svg, png}'
   },
   build: {
     base: './dist',
@@ -62,7 +67,8 @@ export const pathDev = {
     img: './dist/img',
     fonts: './dist/fonts',
     js: './dist/js',
-    files: './dist'
+    files: './dist',
+    favicon: './dist/favicons'
   }
 }
 
@@ -108,7 +114,6 @@ export const htmlDev = () => {
     .pipe(fileInclude())
     // .pipe(webpHtmlNosvg())    ! изображения в формате webp в img вставляем
     .pipe(replace(/@img\//g, 'img/'))
-    // .pipe(htmlmin({ collapseWhitespace: true })) ! mod prod not dev, backend
     .pipe(gulp.dest(pathDev.build.html))
     .pipe(browserSync.stream());
 }
@@ -123,23 +128,11 @@ export const scssDev = () => {
     .pipe(newer(pathDev.build.css))
     .pipe(sass({ outputStyle: 'expanded' }))
     .pipe(replace(/@img\//g, '../img/'))
-    // .pipe(webpcss(
-    //   {
-    //     webpClass: ".webp",
-    //     noWebpClass: ".no-webp"
-    //   }
-    // ))
-    // .pipe(groupCssMediaQueries())   ?? media hover and active not working correct
     .pipe(autoprefixer({
       grid: true,
       overrideBrowserslist: ['last 2 versions'],
       cascade: true
     }))
-
-    // .pipe(gulp.dest(pathDev.build.css))
-
-    // .pipe(cleanCSS())              ! mode prod not dev, backend
-    // .pipe(rename({ suffix: ".min" }))
     .pipe(gulp.dest(pathDev.build.css))
     .pipe(browserSync.stream());
 }
@@ -153,7 +146,6 @@ export const imageminDev = () => {
   return gulp.src([`${pathDev.src.img_src}/**/*.{jpg,jpeg,png,gif,webp,JPG,JPEG,PNG,GIF,WEBP}`])   // [`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`]
     .pipe(plumber(plumberNotify('IMAGE MIN')))
     .pipe(newer(pathDev.src.img))
-    //  98/7 = 226kb-jpg 86kb-png  8/1 = 7kb-jpg 98kb-png  95/3 = 110kb-jpg 98kb-png
     .pipe(imagemin([
       mozjpeg({ quality: 95, progressive: true }),
       optipng({ optimizationLevel: 3 })
@@ -186,13 +178,6 @@ export const svgDev = () => {
         indent: 2,
       }
     }))
-
-    // .pipe(cheerio({
-    //   run: function ($) { $('[fill]').removeAttr('fill'); $('[stroke]').removeAttr('stroke'); $('[style]').removeAttr('style'); },
-    //   parserOptions: { xmlMode: true }
-    // }))
-    // .pipe(replace('&gt;', '>'))
-
     .pipe(gulp.dest(pathDev.src.img))
 }
 
@@ -208,18 +193,6 @@ export const svgSpriteDev = () => {
         pretty: true,
       },
     }))
-    // проще удалить в ручную тк удаляет атрибуты ширины
-    // .pipe(cheerio({
-    //   run: function ($) {
-    //     $('[fill]').removeAttr('fill');
-    //     $('[stroke]').removeAttr('stroke');
-    //     $('[style]').removeAttr('style');
-    //   },
-    //   parserOptions: {
-    //     xmlMode: true
-    //   },
-    // }))
-    // .pipe(replace('&gt;', '>'))
     .pipe(svgSprite({
       mode: {
         symbol: {
@@ -231,29 +204,6 @@ export const svgSpriteDev = () => {
     }))
     .pipe(gulp.dest(`${pathDev.build.img}/svg`));
 }
-
-{/*  <svg class="img">
-        <use xlink:href="sprite.svg#shopping-cart "></use>
-    </svg>
-
-  .icon {
-  display: inline-block;
-  height: 1em;
-  width: 1em;
-  fill: inherit;
-  stroke: inherit;
-}
-
-.icon-burger {
-  font-size:4rem;
-  width:(66/64)+em;
-}
-
-.icon-check_round {
-  font-size:1rem;
-  width:(18/18)+em;
-}
-*/}
 
 // svg BG
 export const svgcssDev = () => {
@@ -285,6 +235,22 @@ export const imgcopyDev = () => {
 }
 // =============================================================================
 
+// FAVICON
+// =============================================================================
+
+
+export const faviconDev = () => {
+  return gulp.src('src/img/favicon/*.{png,svg}')
+    .pipe(plumber(plumberNotify('FAVICON generate')))
+    .pipe(favicons(configFav))
+    .pipe(gulp.dest(pathDev.build.favicon))
+    .pipe(gulp.src('src/img/favicon/favicon.{png,svg}'))
+    .pipe(filter(['favicon.{png,svg}', 'manifest.webmanifest', 'favicon.ico', 'yandex-browser-manifest.json']))
+    .pipe(gulp.dest('./dist'))
+    .pipe(browserSync.stream());
+}
+
+// =============================================================================
 
 // FONTS
 // =============================================================================

@@ -8,11 +8,11 @@ import notify from 'gulp-notify';
 import replace from 'gulp-replace';
 import rename from 'gulp-rename';
 import newer from 'gulp-newer';
+import filter from 'gulp-filter';
 
 import fileInclude from 'gulp-file-include';
 import webpHtmlNosvg from 'gulp-webp-html-nosvg';
 import htmlmin from 'gulp-htmlmin';
-
 
 import * as sass_ from 'sass'
 import gulpSass from 'gulp-sass';
@@ -28,6 +28,9 @@ import svgmin from 'gulp-svgmin';
 import cheerio from 'gulp-cheerio';
 import svgSprite from 'gulp-svg-sprite';
 import svgcss from 'gulp-svg-css-pseudo';
+
+import favicons from 'gulp-favicons';
+import configFav from '../src/favicon_conf/config_favicon.js';
 
 import fs from 'fs';
 import fonter from 'gulp-fonter-fix';
@@ -51,7 +54,8 @@ export const pathProd = {
     img_src: './src/img_src',
     fonts: './src/fonts',
     js: './src/js',
-    files: './src/files/**/*.*'
+    files: './src/files/**/*.*',
+    favicon: 'src/img/favicon/*.{svg,png}'
   },
   build: {
     base: './docs',
@@ -60,7 +64,8 @@ export const pathProd = {
     img: './docs/img',
     fonts: './docs/fonts',
     js: './docs/js',
-    files: './docs'
+    files: './docs',
+    favicon: './docs/favicons/'
   }
 }
 
@@ -181,12 +186,6 @@ export const svgProd = () => {
     // .pipe(newer(pathProd.src.img))
     .pipe(svgmin())
 
-    // .pipe(cheerio({
-    //   run: function ($) { $('[fill]').removeAttr('fill'); $('[stroke]').removeAttr('stroke'); $('[style]').removeAttr('style'); },
-    //   parserOptions: { xmlMode: true }
-    // }))
-    // .pipe(replace('&gt;', '>'))
-
     .pipe(gulp.dest(pathProd.src.img))
 }
 
@@ -200,17 +199,7 @@ export const svgSpriteProd = () => {
         pretty: true,
       },
     }))
-    .pipe(cheerio({
-      run: function ($) {
-        $('[fill]').removeAttr('fill');
-        $('[stroke]').removeAttr('stroke');
-        $('[style]').removeAttr('style');
-      },
-      parserOptions: {
-        xmlMode: true
-      },
-    }))
-    .pipe(replace('&gt;', '>'))
+
     .pipe(svgSprite({
       mode: {
         symbol: {
@@ -222,29 +211,6 @@ export const svgSpriteProd = () => {
     }))
     .pipe(gulp.dest(`${pathProd.build.img}/svg`));
 }
-
-{/*  <svg class="img">
-        <use xlink:href="sprite.svg#shopping-cart "></use>
-    </svg>
-
-  .icon {
-  display: inline-block;
-  height: 1em;
-  width: 1em;
-  fill: inherit;
-  stroke: inherit;
-}
-
-.icon-burger {
-  font-size:4rem;
-  width:(66/64)+em;
-}
-
-.icon-check_round {
-  font-size:1rem;
-  width:(18/18)+em;
-}
-*/}
 
 // svg BG
 export const svgcssProd = () => {
@@ -276,6 +242,20 @@ export const imgcopyProd = () => {
 }
 // =============================================================================
 
+// FAVICON
+// =============================================================================
+export const faviconProd = () => {
+  // img to min
+  return gulp.src(pathProd.src.favicon)   // [`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`]
+    .pipe(plumber(plumberNotify('FAVICON generate')))
+    .pipe(favicons(configFav))
+    .pipe(gulp.dest(pathProd.build.favicon))
+
+    .pipe(gulp.src('src/img/favicon/favicon.{png,svg}'))
+    .pipe(filter(['favicon.{png,svg}', 'manifest.webmanifest', 'favicon.ico', 'yandex-browser-manifest.json']))
+    .pipe(gulp.dest('./docs'))
+    .pipe(browserSync.stream());
+}
 
 // FONTS
 // =============================================================================

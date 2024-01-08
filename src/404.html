@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+<head>
+  <meta charset="UTF-8">
+
+  @@include('html/part/_favicon.htm')
+
+  @@include('html/part/_head.htm',{"title": "404 error ",
+  "descriprion": "page not found",
+  "keywords":"страница не найдена"})
+
+</head>
+
+
+<body class="page-body" style="background-color: #141024;">
+
+  <header class="header">
+    <div class="header__container container-fluid">
+      <a href="/" class="header__logo logo">
+        <img src="img/svg/logo/logo.svg" alt="Логотип site38" width="164" height="48">
+      </a>
+      <nav class="nav header__nav" title="Главное меню" data-menu>
+        <ul class="nav__list header__nav-list">
+          <li data-menu-item class="nav__item"><a href="/#services" class="nav__link">Услуги</a></li>
+          <li data-menu-item class="nav__item"><a href="/#portfolio" class="nav__link">Работы</a></li>
+          <li data-menu-item class="nav__item"><a href="/#contact" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <a href="tel:+79832454408" class="header__phone phone">+7 983 245 44 08</a>
+      <button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+        <span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero__container container">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            &lt; 404 /&gt;
+            <span class="hero__title-text">
+              Страница не найдена
+            </span>
+          </h1>
+          <a href="/" data-scroll class="hero__btn btn">
+            На главную
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  @@include('html/section/_footer.htm')
+  @@include('html/part/_js404.htm')
+</body>
+
+</html>
