@@ -26,3 +26,6 @@ alt + shift + f
 }
 
 
+git
+
+git remote set-url origin git@github.com:Vadim2011/step_11.git
