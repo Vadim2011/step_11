@@ -6,31 +6,38 @@
 // percent($px, $from)
 // clamp-px($min-w, $max-w, $size-at-min-w, $size-at-max-w)
 // clamp-rem($min-w, $max-w, $size-at-min-w, $size-at-max-w, $font-rem: 16)
+@import "units/simplebar";
 @import "base/function";
 @import "base/fonts";
 @import "base/reset";
 @import "base/vars";
+@import "base/container";
 @import "base/base";
-// @import "base/svg_bg";
 
 // ======================================================================================
 
-/* Section */
-@import "section/global";
-@import "./blocks/modals";
+/* components */
+@import "blocks/global";
+@import "blocks/btn";
+@import "blocks/nav";
+@import "blocks/burger";
+@import "blocks/modals";
+@import "blocks/load_cercle";
+@import "blocks/form";
 
-// @import "./blocks/ticker";
-// @import "./blocks/form";
-// @import "./blocks/load_cercle";
-// @import "./blocks/tabs";
+// ======================================================================================
 
 // section base
-@import "./section/header";
-@import "./section/hero";
-@import "./section/about";
-@import "./section/contact";
+@import "section/header";
+@import "section/hero";
 
 // footer
-@import "./section/footer";
+@import "section/footer";
 
 // ========= section 2
+
+@import "component/card";
+@import "component/cards_cell";
+@import "component/prod_to_cart";
+@import "component/products_card";
+@import "component/modal_send_cart";
